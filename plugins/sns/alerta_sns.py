@@ -26,7 +26,7 @@ class SnsTopicPublisher(PluginBase):
     def __init__(self, name=None):
         try:
             self.connection = boto.sns.connect_to_region(
-                region_name=AWS_REGION,
+                region_name=AWS_DEFAULT_REGION,
                 aws_access_key_id=AWS_ACCESS_KEY_ID,
                 aws_secret_access_key=AWS_SECRET_ACCESS_KEY
             )
