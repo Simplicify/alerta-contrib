@@ -15,7 +15,7 @@ LOG = logging.getLogger('alerta.plugins.sns')
 DEFAULT_AWS_REGION = 'eu-west-1'
 DEFAULT_AWS_SNS_TOPIC = 'notify'
 
-AWS_REGION = os.environ.get('AWS_REGION') or app.config.get('AWS_REGION', DEFAULT_AWS_REGION)
+AWS_DEFAULT_REGION = os.environ.get('AWS_DEFAULT_REGION') or app.config.get('AWS_REGION', DEFAULT_AWS_REGION)
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID') or app.config.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY') or app.config.get('AWS_SECRET_ACCESS_KEY')
 AWS_SNS_TOPIC = os.environ.get('AWS_SNS_TOPIC') or app.config.get('AWS_SNS_TOPIC', DEFAULT_AWS_SNS_TOPIC)
