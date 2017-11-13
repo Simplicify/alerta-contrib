@@ -58,11 +58,15 @@ class SnsTopicPublisher(PluginBase):
         return alert
 
     def post_receive(self, alert):
+        try:
+            body = alert.serialize  # alerta >= 5.0
+        except Exception:
+            body = alert.get_body()  # alerta < 5.0
 
         LOG.info('Sending message %s to SNS topic "%s"', alert.get_id(), self.topic_arn)
-        LOG.debug('Message: %s', alert.get_body())
+        LOG.debug('Message: %s', body)
 
-        response = self.connection.publish(topic=self.topic_arn, message=alert.get_body())
+        response = self.connection.publish(topic=self.topic_arn, message=body)
         LOG.debug('Response: %s', response)
 
     def status_change(self, alert, status, text):
